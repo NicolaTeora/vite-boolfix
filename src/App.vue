@@ -3,7 +3,7 @@ import { store } from './store';
 import axios from 'axios';
 
 //import componenti
-import MyComponent from './components/MyComponent.vue';
+import SearchBar from './components/SearchBar.vue';
 
 export default{
   data(){
@@ -15,7 +15,7 @@ export default{
     };
   },
   
-  components: { MyComponent },
+  components: { SearchBar },
 
   created(){
     //test recupero api
@@ -28,6 +28,9 @@ export default{
 </script>
 
 <template>
+  <!-- componente SearchBar -->
+  <search-bar/>
+
   <!-- Titolo -->
   <span>Titolo:</span>
   <h1>{{ NameFilms[indexFilm].original_title }}</h1>
@@ -41,8 +44,6 @@ export default{
   <!-- Valutazione -->
   <p>Voto: <b>{{ NameFilms[indexFilm].vote_average }}</b></p>
   
-  <!-- {{ store.saluto + ' nella tua App'}}
-  <my-component/>   -->
 </template>
 
 <style lang="scss">

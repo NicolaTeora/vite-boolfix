@@ -12,10 +12,10 @@ export default{
 </script>
 
 <template>
-  <h2>MyComponent</h2>
-  {{ store.saluto + ' nel componente'}}
+  <label for="search-title">Titolo da cercare </label>
+  <input id="search-title" type="text" >
 </template>
 
 <style lang="scss" scoped>
-  @use '../styles/general.scss'
+  @use '../styles/general.scss' as*;
 </style>
