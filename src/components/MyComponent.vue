@@ -12,8 +12,8 @@ export default{
 </script>
 
 <template>
-  <h1>Hello!</h1>
-  {{ store.saluto }}
+  <h2>MyComponent</h2>
+  {{ store.saluto + ' nel componente'}}
 </template>
 
 <style lang="scss" scoped>

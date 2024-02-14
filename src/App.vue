@@ -9,7 +9,7 @@ export default{
   data(){
     return{
       store,
-      titolo:'ciao'
+      titolo:'ciao da App'
     };
   },
   
@@ -19,8 +19,8 @@ export default{
 </script>
 
 <template>
-  {{ titolo }} <br>
-  {{ store.saluto }}
+  <h1>{{ titolo }}</h1>
+  {{ store.saluto + ' nella tua App'}}
   <my-component/>  
 </template>
 
