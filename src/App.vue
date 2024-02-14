@@ -8,8 +8,10 @@ import MyComponent from './components/MyComponent.vue';
 export default{
   data(){
     return{
+      titolo:'ciao da App',
       store,
-      titolo:'ciao da App'
+      indexFilm: 0,
+      NameFilms:[]
     };
   },
   
@@ -17,17 +19,30 @@ export default{
 
   created(){
     //test recupero api
-    axios.get('https://api.themoviedb.org/3/search/movie?query=John Wick&api_key=50147f23c3955fd1ea8141a464594a2f').then((response)=>{
-      console.log(response.data.results)
+    axios.get(`${store.ApiUri}?query=${store.NameFilm}&api_key=${store.ApiKey}`).then((response)=>{
+      this.NameFilms = response.data.results
+      console.log(this.NameFilms)
     })
   }
 }
 </script>
 
 <template>
-  <h1>{{ titolo }}</h1>
-  {{ store.saluto + ' nella tua App'}}
-  <my-component/>  
+  <!-- Titolo -->
+  <span>Titolo:</span>
+  <h1>{{ NameFilms[indexFilm].original_title }}</h1>
+  
+  <!-- Titolo originale-->
+  <h3>{{ NameFilms[indexFilm].original_title }}</h3>
+
+  <!-- Lingua -->
+  <p>Lingua: <b>{{ NameFilms[indexFilm].original_language }}</b></p>
+
+  <!-- Valutazione -->
+  <p>Voto: <b>{{ NameFilms[indexFilm].vote_average }}</b></p>
+  
+  <!-- {{ store.saluto + ' nella tua App'}}
+  <my-component/>   -->
 </template>
 
 <style lang="scss">
