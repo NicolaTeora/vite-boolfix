@@ -10,7 +10,6 @@ export default{
     return{
       titolo:'ciao da App',
       store,
-      indexFilm: 0,
       NameFilms:[]
     };
   },
@@ -21,7 +20,6 @@ export default{
     //test recupero api
     axios.get(`${store.ApiUri}?query=${store.NameFilm}&api_key=${store.ApiKey}`).then((response)=>{
       this.NameFilms = response.data.results
-      console.log(this.NameFilms)
     })
   }
 }
@@ -31,18 +29,16 @@ export default{
   <!-- componente SearchBar -->
   <search-bar/>
 
-  <!-- Titolo -->
-  <span>Titolo:</span>
-  <h1>{{ NameFilms[indexFilm].original_title }}</h1>
-  
-  <!-- Titolo originale-->
-  <h3>{{ NameFilms[indexFilm].original_title }}</h3>
+  <ul v-for="film of NameFilms">
+    <!-- Titolo -->
+    <li>Nome: {{ film.original_title }}</li>
+    <li>Titolo: <b>{{ film.original_title }}</b></li>
+    <!-- Lingua -->
+    <li>Lingua: {{ film.original_language }}</li>
+    <!-- Valutazione -->
+    <li>Voto: {{ film.vote_average }}</li>
+  </ul>
 
-  <!-- Lingua -->
-  <p>Lingua: <b>{{ NameFilms[indexFilm].original_language }}</b></p>
-
-  <!-- Valutazione -->
-  <p>Voto: <b>{{ NameFilms[indexFilm].vote_average }}</b></p>
   
 </template>
 
