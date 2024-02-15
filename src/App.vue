@@ -16,11 +16,12 @@ export default{
   
   components: { SearchBar },
 
-  created(){
+  mounted(){
     //test recupero api
     axios.get(`${store.ApiUri}?query=${store.NameFilm}&api_key=${store.ApiKey}`).then((response)=>{
       this.NameFilms = response.data.results
     })
+    console.log(this.NameFilms)
   }
 }
 </script>
