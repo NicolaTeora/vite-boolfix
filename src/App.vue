@@ -31,6 +31,7 @@ export default{
 </script>
 
 <template>
+  <h1>BOOLFLIX</h1>
   <!-- componente SearchBar -->
   <search-bar @foun_film="searchFilm"/>
 
