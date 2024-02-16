@@ -24,13 +24,19 @@ export default{
         this.NameFilms = response.data.results
       })    
     },   
+    
     // metodo ricerca serie
-    searcSeries(){
+    searchSerie(){
       axios.get(`${store.ApiUri}${store.EndPointSerie}?query=${store.TitleProduct}&api_key=${store.ApiKey}`).then((response)=>{
-        this.NameFilms = response.data.results
+        this.NameSeries = response.data.results
       })
-    }
+    },
 
+    
+    searchTotal(){
+      this.searchFilm()
+      this.searchSerie()
+    }
     
   } 
 
@@ -40,7 +46,7 @@ export default{
 <template>
   <h1>BOOLFLIX</h1>
   <!-- componente SearchBar -->
-  <search-bar @foun_film="searchFilm"/>
+  <search-bar @foun_film_serie="searchTotal"/>
 
   <ul v-for="film of NameFilms">
     <!-- Titolo -->
@@ -50,6 +56,16 @@ export default{
     <li>Lingua: {{ film.original_language }}</li>
     <!-- Valutazione -->
     <li>Voto: {{ film.vote_average }}</li>
+  </ul>
+
+  <ul v-for="serie of NameSeries">
+    <!-- Titolo -->
+    <li>Nome: {{ serie.name }}</li>
+    <li>Titolo: <b>{{ serie.original_name }}</b></li>
+    <!-- Lingua -->
+    <li>Lingua: {{ serie.original_language }}</li>
+    <!-- Valutazione -->
+    <li>Voto: {{ serie.vote_average }}</li>
   </ul>
 
   

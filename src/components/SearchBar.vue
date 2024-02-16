@@ -9,7 +9,7 @@ export default{
     }
   },
 
-  emits:['foun_film'],
+  emits:['foun_film_serie'],
 
   methods:{
     refresInput(){
@@ -24,7 +24,7 @@ export default{
   <h3>Film</h3>
   <label for="search-title">Titolo film da cercare </label>
   <input id="search-title" type="text" v-model="store.TitleProduct">
-  <button @click="$emit('foun_film'), refresInput()">Cerca</button>  
+  <button @click="$emit('foun_film_serie'), refresInput()">Cerca</button>  
 
   <!-- <h3>Serie Tv</h3>
   <label for="search-title">Titolo serie da cercare </label>
