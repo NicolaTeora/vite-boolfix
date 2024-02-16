@@ -13,4 +13,8 @@ export const store = reactive({
   //nome del film da cercare
   TitleProduct: "",
   ApiKey: "50147f23c3955fd1ea8141a464594a2f",
+
+  //array rislutati results
+  NameFilms: [],
+  NameSeries: [],
 });
