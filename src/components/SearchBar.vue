@@ -5,17 +5,14 @@ export default{
   data(){
     return{
       store,
-      TitleFilm:''
+      //TitleFilm:''
     }
   },
 
-  methods:{
-    searchFilms(){
-      store.NameFilm = this.TitleFilm
-      this.TitleFilm = ''
-    },
+  emits:['foun_film'],
 
-    searchSeries(){}
+  methods:{
+
   }
   
 }
@@ -24,13 +21,13 @@ export default{
 <template>
   <h3>Film</h3>
   <label for="search-title">Titolo film da cercare </label>
-  <input id="search-title" type="text" v-model="TitleFilm">
-  <button @click="searchFilms()">Cerca</button>  
+  <input id="search-title" type="text" v-model="store.NameFilm">
+  <button @click="$emit('foun_film')">Cerca</button>  
 
-  <h3>Serie Tv</h3>
+  <!-- <h3>Serie Tv</h3>
   <label for="search-title">Titolo serie da cercare </label>
   <input id="search-title" type="text" v-model="TitleFilm">
-  <button @click="searchSeries()">Cerca</button>
+  <button @click="searchSeries()">Cerca</button> -->
 </template>
 <style lang="scss" scoped>
   @use '../styles/general.scss' as*;

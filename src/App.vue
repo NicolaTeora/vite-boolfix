@@ -8,7 +8,6 @@ import SearchBar from './components/SearchBar.vue';
 export default{
   data(){
     return{
-      titolo:'ciao da App',
       store,
       NameFilms:[]
     };
@@ -16,19 +15,24 @@ export default{
   
   components: { SearchBar },
 
-  mounted(){
-    //test recupero api
-    axios.get(`${store.ApiUri}?query=${store.NameFilm}&api_key=${store.ApiKey}`).then((response)=>{
-      this.NameFilms = response.data.results
-    })
-    console.log(this.NameFilms)
-  }
+  
+  methods:{
+    // TODO: agganciare il metodo con l'emit del componente search
+    searchFilm(){
+      axios.get(`${store.ApiUri}?query=${store.NameFilm}&api_key=${store.ApiKey}`).then((response)=>{
+        this.NameFilms = response.data.results
+        console.log(this.NameFilms)
+      })    
+    }   
+    
+  } 
+
 }
 </script>
 
 <template>
   <!-- componente SearchBar -->
-  <search-bar/>
+  <search-bar @foun_film="searchFilm"/>
 
   <ul v-for="film of NameFilms">
     <!-- Titolo -->
