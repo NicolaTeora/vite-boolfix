@@ -9,7 +9,8 @@ export default{
   data(){
     return{
       store,
-      NameFilms:[]
+      NameFilms:[],
+      NameSeries:[],
     };
   },
   
@@ -17,13 +18,19 @@ export default{
 
   
   methods:{
-    // TODO: agganciare il metodo con l'emit del componente search
+    // metodo ricerca film
     searchFilm(){
-      axios.get(`${store.ApiUri}?query=${store.NameFilm}&api_key=${store.ApiKey}`).then((response)=>{
+      axios.get(`${store.ApiUri}${store.EndPointFilm}?query=${store.TitleProduct}&api_key=${store.ApiKey}`).then((response)=>{
         this.NameFilms = response.data.results
-        console.log(this.NameFilms)
       })    
-    }   
+    },   
+    // metodo ricerca serie
+    searcSeries(){
+      axios.get(`${store.ApiUri}${store.EndPointSerie}?query=${store.TitleProduct}&api_key=${store.ApiKey}`).then((response)=>{
+        this.NameFilms = response.data.results
+      })
+    }
+
     
   } 
 

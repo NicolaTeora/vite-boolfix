@@ -13,7 +13,7 @@ export default{
 
   methods:{
     refresInput(){
-      store.NameFilm = ''
+      store.TitleProduct = ''
     }
   }
   
@@ -23,7 +23,7 @@ export default{
 <template>
   <h3>Film</h3>
   <label for="search-title">Titolo film da cercare </label>
-  <input id="search-title" type="text" v-model="store.NameFilm">
+  <input id="search-title" type="text" v-model="store.TitleProduct">
   <button @click="$emit('foun_film'), refresInput()">Cerca</button>  
 
   <!-- <h3>Serie Tv</h3>
