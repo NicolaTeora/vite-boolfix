@@ -9,8 +9,6 @@ export default{
   data(){
     return{
       store,
-      // NameFilms:[],
-      // NameSeries:[],
     };
   },
 
@@ -23,6 +21,7 @@ export default{
     searchFilm(){
       axios.get(`${store.ApiUri}${store.EndPointFilm}?query=${store.TitleProduct}&api_key=${store.ApiKey}`).then((response)=>{
         store.NameFilms = response.data.results
+        console.log(store.NameFilms)
       })    
     },   
     
@@ -37,6 +36,14 @@ export default{
     searchTotal(){
       this.searchFilm()
       this.searchSerie()
+    },
+
+    //metodo visualizzazione bandiere
+    flagsApi(language){},
+    
+    //convertire il voto in intero
+    voteTitle(vote){
+      return parseInt(vote)
     }
     
   } 
@@ -54,7 +61,7 @@ export default{
     <li>Nome: {{ film.original_title }}</li>
     <li>Titolo: <b>{{ film.original_title }}</b></li>
     <!-- Valutazione -->
-    <li>Voto: {{ film.vote_average }}</li>
+    <li>Voto: {{ voteTitle(film.vote_average) }}</li>
     <!-- Lingua -->
     <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+film.original_language+'.png'" :alt="film.original_language"></li>
   </ul>
@@ -64,7 +71,7 @@ export default{
     <li>Nome: {{ serie.name }}</li>
     <li>Titolo: <b>{{ serie.original_name }}</b></li>
     <!-- Valutazione -->
-    <li>Voto: {{ serie.vote_average }}</li>
+    <li>Voto: {{ voteTitle(serie.vote_average) }}</li>
     <!-- Lingua -->
     <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+serie.original_language+'.png'" :alt="serie.original_language"></li>
   </ul>
