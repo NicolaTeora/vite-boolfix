@@ -9,6 +9,7 @@ export default{
   data(){
     return{
       store,
+      LinkPosterTitle: '',
     };
   },
 
@@ -39,11 +40,19 @@ export default{
     },
 
     //metodo visualizzazione bandiere
-    flagsApi(language){},
+    // TODO: chiedere al tutor perchè non funziona
+    flagsApi(language){
+      if (language == 'en') {language = 'gb'} else { return language }
+    },
     
     //convertire il voto in intero
     voteTitle(vote){
       return parseInt(vote)
+    },
+
+    //metodo stampo della copertina
+    pathPosterTitle(poster){
+      return this.LinkPosterTitle = store.urlImg + poster
     }
     
   } 
@@ -63,7 +72,9 @@ export default{
     <!-- Valutazione -->
     <li>Voto: {{ voteTitle(film.vote_average) }}</li>
     <!-- Lingua -->
-    <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+film.original_language+'.png'" :alt="film.original_language"></li>
+    <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+flagsApi(film.original_language)+'.png'" :alt="film.original_language"></li>
+    <!-- Poster del film -->
+    <li><img :src="pathPosterTitle(film.poster_path)" alt=""></li>
   </ul>
 
   <ul v-for="serie of store.NameSeries">
@@ -73,7 +84,7 @@ export default{
     <!-- Valutazione -->
     <li>Voto: {{ voteTitle(serie.vote_average) }}</li>
     <!-- Lingua -->
-    <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+serie.original_language+'.png'" :alt="serie.original_language"></li>
+    <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+flagsApi(serie.original_language)+'.png'" :alt="serie.original_language"></li>
   </ul>
 
   

@@ -14,6 +14,9 @@ export const store = reactive({
   TitleProduct: "",
   ApiKey: "50147f23c3955fd1ea8141a464594a2f",
 
+  //dati stampa copertina
+  urlImg: "https://image.tmdb.org/t/p/w300/",
+
   //array rislutati results
   NameFilms: [],
   NameSeries: [],
