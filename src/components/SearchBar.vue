@@ -5,7 +5,6 @@ export default{
   data(){
     return{
       store,
-      //TitleFilm:''
     }
   },
 
@@ -21,16 +20,40 @@ export default{
 </script>
 
 <template>
-  <h3>Film</h3>
-  <label for="search-title">Titolo film da cercare </label>
-  <input id="search-title" type="text" v-model="store.TitleProduct">
-  <button @click="$emit('foun_film_serie'), refresInput()">Cerca</button>  
+  <nav>
+    <div class="container">
+      <label for="search-title"> Titolo da cercare: </label>
+      <input id="search-title" type="text" placeholder="Inserisci Film/Serie " v-model="store.TitleProduct">
+      <button @click="$emit('foun_film_serie'), refresInput()">Cerca</button>  
+    </div>
+  </nav>
 
-  <!-- <h3>Serie Tv</h3>
-  <label for="search-title">Titolo serie da cercare </label>
-  <input id="search-title" type="text" v-model="TitleFilm">
-  <button @click="searchSeries()">Cerca</button> -->
 </template>
 <style lang="scss" scoped>
   @use '../styles/general.scss' as*;
+  
+  nav{
+    padding: 1rem 0;
+    color: red;
+    background-color: rgb(29, 29, 29);
+    
+    label{
+      font-family:'Courier New', Courier, monospace;
+      font-weight: bold;
+    }
+
+    #search-title{
+      width: 50%;
+      margin-right: 1rem;
+      padding: 2px 5px;
+      background-color: lightgray;
+      border-style: none;
+    }
+
+    button{
+      border-style: none;
+      background-color: inherit;
+      color: inherit;
+    }
+  }
 </style>

@@ -4,6 +4,7 @@ import axios from 'axios';
 
 //import componenti
 import SearchBar from './components/SearchBar.vue';
+import HeaderApp from './components/HeaderApp.vue';
 
 export default{
   data(){
@@ -14,7 +15,7 @@ export default{
   },
 
   
-  components: { SearchBar },
+  components: { SearchBar, HeaderApp },
 
   
   methods:{
@@ -61,7 +62,7 @@ export default{
 </script>
 
 <template>
-  <h1>BOOLFLIX</h1>
+  <header-app/>
   <!-- componente SearchBar -->
   <search-bar @foun_film_serie="searchTotal"/>
 
@@ -85,6 +86,8 @@ export default{
     <li>Voto: {{ voteTitle(serie.vote_average) }}</li>
     <!-- Lingua -->
     <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+flagsApi(serie.original_language)+'.png'" :alt="serie.original_language"></li>
+    <!-- Poster del film -->
+    <li><img :src="pathPosterTitle(serie.poster_path)" alt=""></li>
   </ul>
 
   
