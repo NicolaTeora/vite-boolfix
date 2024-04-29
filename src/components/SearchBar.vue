@@ -51,9 +51,14 @@ export default{
     }
 
     button{
-      border-style: none;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid whitesmoke;
       background-color: inherit;
       color: inherit;
+      &:hover{
+        background-color: lightgray;
+      }
     }
   }
 </style>

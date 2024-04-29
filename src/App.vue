@@ -66,33 +66,37 @@ export default{
   <!-- componente SearchBar -->
   <search-bar @foun_film_serie="searchTotal"/>
 
-  <ul v-for="film of store.NameFilms">
-    <!-- Titolo -->
-    <li>Nome: {{ film.original_title }}</li>
-    <li>Titolo: <b>{{ film.original_title }}</b></li>
-    <!-- Valutazione -->
-    <li>Voto: {{ voteTitle(film.vote_average) }}</li>
-    <!-- Lingua -->
-    <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+flagsApi(film.original_language)+'.png'" :alt="film.original_language"></li>
-    <!-- Poster del film -->
-    <li><img :src="pathPosterTitle(film.poster_path)" alt=""></li>
-  </ul>
+  <div class="container">
+    <ul v-for="film of store.NameFilms">
+      <!-- Titolo -->
+      <li>Nome: {{ film.original_title }}</li>
+      <li>Titolo: <b>{{ film.original_title }}</b></li>
+      <!-- Valutazione -->
+      <li>Voto: {{ voteTitle(film.vote_average) }}</li>
+      <!-- Lingua -->
+      <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+flagsApi(film.original_language)+'.png'" :alt="film.original_language"></li>
+      <!-- Poster del film -->
+      <li><img :src="pathPosterTitle(film.poster_path)" alt=""></li>
+    </ul>
+  
+    <ul v-for="serie of store.NameSeries">
+      <!-- Titolo -->
+      <li>Nome: {{ serie.name }}</li>
+      <li>Titolo: <b>{{ serie.original_name }}</b></li>
+      <!-- Valutazione -->
+      <li>Voto: {{ voteTitle(serie.vote_average) }}</li>
+      <!-- Lingua -->
+      <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+flagsApi(serie.original_language)+'.png'" :alt="serie.original_language"></li>
+      <!-- Poster del film -->
+      <li><img :src="pathPosterTitle(serie.poster_path)" alt=""></li>
+    </ul>
+  </div>
 
-  <ul v-for="serie of store.NameSeries">
-    <!-- Titolo -->
-    <li>Nome: {{ serie.name }}</li>
-    <li>Titolo: <b>{{ serie.original_name }}</b></li>
-    <!-- Valutazione -->
-    <li>Voto: {{ voteTitle(serie.vote_average) }}</li>
-    <!-- Lingua -->
-    <li>Lingua: <img :src="'https://flagcdn.com/32x24/'+flagsApi(serie.original_language)+'.png'" :alt="serie.original_language"></li>
-    <!-- Poster del film -->
-    <li><img :src="pathPosterTitle(serie.poster_path)" alt=""></li>
-  </ul>
 
   
 </template>
 
 <style lang="scss">
   @use './styles/general.scss' as*;
+
 </style>
